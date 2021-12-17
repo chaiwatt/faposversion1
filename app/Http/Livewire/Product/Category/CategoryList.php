@@ -13,60 +13,67 @@ class CategoryList extends Component
     public $category;
 
     public $showEditModal = true;
-
-    protected $listeners = ['deleteConfirmed' => 'deleteCategory'];
+    
+    protected $listeners = [
+        'refreshHost' => 'refreshHost',
+        'deleteConfirmed' => 'deleteCategory'
+    ];
 
     public $categoryIdBeingRemoved = null;
 
     public function addNew(){
         $this->reset();
 
-        $this->showEditModal = false;
+        // $this->showEditModal = false;
 
         $this->dispatchBrowserEvent('show-category-modal');
     }
 
-    public function createCategory(){
-        $validateData = Validator::make($this->state, [
-                'name' => 'required'
-            ],
-            [
-                'name.required' => 'กรุณากรอก'
-        ])->validate();
+    public function refreshHost(){
+       dd('host');
+    }
+
+    // public function createCategory(){
+    //     $validateData = Validator::make($this->state, [
+    //             'name' => 'required'
+    //         ],
+    //         [
+    //             'name.required' => 'กรุณากรอก'
+    //     ])->validate();
         
-        Category::create($validateData);    
+    //     Category::create($validateData);    
 
-        $this->dispatchBrowserEvent('hide-category-modal',[
-            'message' => 'เพิ่มหมวดหมู่สำเร็จ'
-        ]);
-    }
+    //     $this->dispatchBrowserEvent('hide-category-modal',[
+    //         'message' => 'เพิ่มหมวดหมู่สำเร็จ'
+    //     ]);
+    // }
 
-    public function edit(Category $category){
-        $this->reset();
+    // public function edit(Category $category){
+    //     $this->reset();
 
-        $this->showEditModal = true;
+    //     $this->showEditModal = true;
 
-        $this->category = $category;
+    //     $this->category = $category;
 
-        $this->state = $category->toArray();
+    //     $this->state = $category->toArray();
 
-        $this->dispatchBrowserEvent('show-category-modal');
-    }
+    //     $this->dispatchBrowserEvent('show-category-modal');
+    // }
 
-    public function updateCategory(){
-        $validateData = Validator::make($this->state, [
-                'name' => 'required'
-            ],
-            [
-                'name.required' => 'กรุณากรอก'
-        ])->validate();
+    // public function updateCategory(){
+    //     $validateData = Validator::make($this->state, [
+    //             'name' => 'required'
+    //         ],
+    //         [
+    //             'name.required' => 'กรุณากรอก'
+    //     ])->validate();
 
-        $this->category->update($validateData);
+    //     $this->category->update($validateData);
 
-        $this->dispatchBrowserEvent('hide-category-modal',[
-            'message' => 'แก้ไขหมวดหมู่สำเร็จ'
-        ]);
-    }
+    //     $this->dispatchBrowserEvent('hide-category-modal',[
+    //         'message' => 'แก้ไขหมวดหมู่สำเร็จ'
+    //     ]);
+    // }
 
     public function delete($id){
         $this->categoryIdBeingRemoved = $id;

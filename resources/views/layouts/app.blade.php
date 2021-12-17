@@ -270,8 +270,10 @@ $(document).ready(function() {
   });
 
   window.addEventListener('show-category-modal', event => {
+    Livewire.emit('editEvent',false);
     $('#category-form').modal('show');
   });
+
 
   window.addEventListener('show-delete-confirmation', event => {
     Swal.fire({
