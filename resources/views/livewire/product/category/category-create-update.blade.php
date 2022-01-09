@@ -1,6 +1,6 @@
 <div>
    
-    <div class="modal fade" id="category-form" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" wire:ignore.self>
+    <div class="modal fade" id="category-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog">
             <form wire:submit.prevent="{{ $editAction ? 'updateCategory' : 'createCategory'}}" autocomplete="off">
                 <div class="modal-content">
@@ -34,3 +34,18 @@
         </div>
     </div>
 </div>
+
+@push('js')
+    <script>
+        (function($){
+
+            $(document).on('livewire:load', function() {
+                Livewire.on('modalClose', (data) => {
+                    $(data.modalId).modal('hide')
+                    toastr.success(data.message, 'สำเร็จ!');
+                })
+            })
+
+        })(jQuery)
+    </script>
+@endpush

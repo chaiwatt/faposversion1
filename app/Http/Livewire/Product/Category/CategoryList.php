@@ -15,7 +15,7 @@ class CategoryList extends Component
     public $showEditModal = true;
     
     protected $listeners = [
-        'refreshHost' => 'refreshHost',
+        '$refresh' => '$refresh',
         'deleteConfirmed' => 'deleteCategory'
     ];
 
@@ -29,9 +29,6 @@ class CategoryList extends Component
         $this->dispatchBrowserEvent('show-category-modal');
     }
 
-    public function refreshHost(){
-       dd('host');
-    }
 
     // public function createCategory(){
     //     $validateData = Validator::make($this->state, [

@@ -271,7 +271,7 @@ $(document).ready(function() {
 
   window.addEventListener('show-category-modal', event => {
     Livewire.emit('editEvent',false);
-    $('#category-form').modal('show');
+    $('#category-modal').modal('show');
   });
 
 
@@ -302,7 +302,7 @@ $(document).ready(function() {
   })
 
   window.addEventListener('hide-category-modal', event => {
-      $('#category-form').modal('hide');
+      $('#category-modal').modal('hide');
       toastr.success(event.detail.message, 'สำเร็จ!');
   });
 

@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-        <div class="modal fade" id="category-form" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal fade" id="category-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" wire:ignore.self>
             <div class="modal-dialog">
                 <form wire:submit.prevent="{{ $showEditModal ? 'updateCategory' : 'createCategory'}}" autocomplete="off">
                     <div class="modal-content">

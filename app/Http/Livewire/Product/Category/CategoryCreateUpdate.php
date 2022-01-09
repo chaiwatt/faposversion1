@@ -20,7 +20,7 @@ class CategoryCreateUpdate extends Component
     }
 
     public function createCategory(){
-      
+
         $validateData = Validator::make($this->state, [
                 'name' => 'required'
             ],
@@ -30,11 +30,11 @@ class CategoryCreateUpdate extends Component
 
         Category::create($validateData);    
 
-        // $this->dispatchBrowserEvent('hide-category-modal',[
-        //     'message' => 'เพิ่มหมวดหมู่สำเร็จ'
-        // ]);
-        
-        $this->emitTo('product.category.category-create-update', 'refreshHost');
+        $this->emitUp('$refresh');
+        $this->emit('modalClose', [
+            'modalId' => '#category-modal',
+            'message' => 'เพิ่มสำเร็จ'
+        ]);
         
     }
 
