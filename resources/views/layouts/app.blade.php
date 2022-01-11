@@ -276,7 +276,7 @@ $(document).ready(function() {
 
   $(document).on('livewire:load', function() {
       Livewire.on('show-category-modal', (data) => {
-          Livewire.emit('editEvent',false);
+          Livewire.emit('editEvent',data.showEditModal);
           $(data.modalId).modal('show')
       })
       Livewire.on('modalClose', (data) => {

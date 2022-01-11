@@ -31,6 +31,7 @@ class CategoryList extends Component
 
         $this->emit('show-category-modal', [
             'modalId' => '#category-modal',
+            'showEditModal' => false
         ]);
     }
 
@@ -50,17 +51,22 @@ class CategoryList extends Component
     //     ]);
     // }
 
-    // public function edit(Category $category){
-    //     $this->reset();
+    public function edit(Category $category){
+        $this->reset();
 
-    //     $this->showEditModal = true;
+        // $this->showEditModal = true;
 
-    //     $this->category = $category;
+        $this->category = $category;
 
-    //     $this->state = $category->toArray();
+        $this->state = $category->toArray();
+        dd($this->state);
 
-    //     $this->dispatchBrowserEvent('show-category-modal');
-    // }
+        // $this->dispatchBrowserEvent('show-category-modal');
+        $this->emit('show-category-modal', [
+            'modalId' => '#category-modal',
+            'showEditModal' => true
+        ]);
+    }
 
     // public function updateCategory(){
     //     $validateData = Validator::make($this->state, [
@@ -79,10 +85,6 @@ class CategoryList extends Component
 
     public function delete($id){
         $this->categoryIdBeingRemoved = $id;
-        // $this->dispatchBrowserEvent('show-delete-confirmation',[
-        //     'title' => 'ลบหมวดหมู่',
-        //     'text' => 'ต้องการลบหมวดหมู่หรือไม่',
-        // ]);
         $this->emit('show-delete-confirmation', [
             'title' => 'ลบหมวด',
             'text' => 'คิงจะลบแต้กะ',

@@ -15,6 +15,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">ชื่อหมวดหมู่</label>
+                            
                             <input wire:model.lazy="state.name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="ชื่อหมวดหมู่">
                             @error('name')
                               <div class="invalid-feedback">
