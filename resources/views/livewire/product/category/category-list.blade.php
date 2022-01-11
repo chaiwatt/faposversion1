@@ -39,9 +39,8 @@
                                 <td>{{ $category->products->count() }}</td>
                                 <td>
                                     <a href=""><i class="fa fa-eye text-info mr-1"></i> </a>
-                                    {{-- <a wire:click.prevent="edit({{ $category }})" href=""><i class="fa fa-edit mr-1"></i> </a> --}}
                                     <a wire:click="$emit('eventAction', 'edit', {{ $category }})" href=""><i class="fa fa-edit mr-1"></i> </a>
-                                    <a wire:click="$emit('eventAction', 'delete', {{ $category }})" href=""><i class="fa fa-trash text-danger"></i> </a>
+                                    <a wire:click.prevent="delete({{ $category->id }})" href=""><i class="fa fa-trash text-danger"></i> </a>
                                 </td>
                             </tr>
                         @endforeach

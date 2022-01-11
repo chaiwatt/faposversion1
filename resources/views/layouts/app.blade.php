@@ -283,27 +283,43 @@ $(document).ready(function() {
           $(data.modalId).modal('hide')
           toastr.success(data.message, 'สำเร็จ!');
       })
+      Livewire.on('show-delete-confirmation', (data) => {
+          Swal.fire({
+            title: data.title,
+            text: data.text,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ตกลง',
+            cancelButtonText: 'ยกเลิก',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Livewire.emit('deleteConfirmed')
+            }
+          })
+      })
   })
 
   
 
 
-  window.addEventListener('show-delete-confirmation', event => {
-    Swal.fire({
-      title: event.detail.title,
-      text: event.detail.text,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'ตกลง',
-      cancelButtonText: 'ยกเลิก',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Livewire.emit('deleteConfirmed')
-      }
-    })
-  })
+  // window.addEventListener('show-delete-confirmation', event => {
+  //   Swal.fire({
+  //     title: event.detail.title,
+  //     text: event.detail.text,
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'ตกลง',
+  //     cancelButtonText: 'ยกเลิก',
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Livewire.emit('deleteConfirmed')
+  //     }
+  //   })
+  // })
 
   window.addEventListener('show-alert-error', event=> {
     Swal.fire({

@@ -79,9 +79,13 @@ class CategoryList extends Component
 
     public function delete($id){
         $this->categoryIdBeingRemoved = $id;
-        $this->dispatchBrowserEvent('show-delete-confirmation',[
-            'title' => 'ลบหมวดหมู่',
-            'text' => 'ต้องการลบหมวดหมู่หรือไม่',
+        // $this->dispatchBrowserEvent('show-delete-confirmation',[
+        //     'title' => 'ลบหมวดหมู่',
+        //     'text' => 'ต้องการลบหมวดหมู่หรือไม่',
+        // ]);
+        $this->emit('show-delete-confirmation', [
+            'title' => 'ลบหมวด',
+            'text' => 'คิงจะลบแต้กะ',
         ]);
     }
 
