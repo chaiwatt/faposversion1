@@ -22,11 +22,16 @@ class CategoryList extends Component
     public $categoryIdBeingRemoved = null;
 
     public function addNew(){
+    
         $this->reset();
 
         // $this->showEditModal = false;
 
-        $this->dispatchBrowserEvent('show-category-modal');
+        // $this->dispatchBrowserEvent('show-category-modal');
+
+        $this->emit('show-category-modal', [
+            'modalId' => '#category-modal',
+        ]);
     }
 
 

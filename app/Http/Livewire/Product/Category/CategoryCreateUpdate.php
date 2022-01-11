@@ -20,7 +20,6 @@ class CategoryCreateUpdate extends Component
     }
 
     public function createCategory(){
-
         $validateData = Validator::make($this->state, [
                 'name' => 'required'
             ],
@@ -33,22 +32,22 @@ class CategoryCreateUpdate extends Component
         $this->emitUp('$refresh');
         $this->emit('modalClose', [
             'modalId' => '#category-modal',
-            'message' => 'เพิ่มสำเร็จ'
+            'message' => 'เพิ่มหมวดหมู่สำเร็จ'
         ]);
-        
     }
 
-    // public function edit(Category $category){
-    //     $this->reset();
+    public function edit(Category $category){
+        dd('here');
+        // $this->reset();
 
-    //     $this->showEditModal = true;
+        // $this->showEditModal = true;
 
-    //     $this->category = $category;
+        // $this->category = $category;
 
-    //     $this->state = $category->toArray();
+        // $this->state = $category->toArray();
 
-    //     $this->dispatchBrowserEvent('show-category-modal');
-    // }
+        // $this->dispatchBrowserEvent('show-category-modal');
+    }
 
     // public function updateCategory(){
     //     $validateData = Validator::make($this->state, [

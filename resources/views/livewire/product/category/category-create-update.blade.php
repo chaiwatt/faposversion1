@@ -38,14 +38,12 @@
 @push('js')
     <script>
         (function($){
-
             $(document).on('livewire:load', function() {
                 Livewire.on('modalClose', (data) => {
                     $(data.modalId).modal('hide')
                     toastr.success(data.message, 'สำเร็จ!');
                 })
             })
-
         })(jQuery)
     </script>
 @endpush

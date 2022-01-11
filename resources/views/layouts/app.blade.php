@@ -269,10 +269,18 @@ $(document).ready(function() {
           }
   });
 
-  window.addEventListener('show-category-modal', event => {
-    Livewire.emit('editEvent',false);
-    $('#category-modal').modal('show');
-  });
+  // window.addEventListener('show-category-modal', event => {
+  //   Livewire.emit('editEvent',false);
+  //   $('#category-modal').modal('show');
+  // });
+
+  $(document).on('livewire:load', function() {
+      Livewire.on('show-category-modal', (data) => {
+          $(data.modalId).modal('show')
+      })
+  })
+
+  
 
 
   window.addEventListener('show-delete-confirmation', event => {
