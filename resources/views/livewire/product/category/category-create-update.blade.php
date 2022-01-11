@@ -36,7 +36,7 @@
 </div>
 
 @push('js')
-    <script>
+    {{-- <script>
         (function($){
             $(document).on('livewire:load', function() {
                 Livewire.on('modalClose', (data) => {
@@ -45,5 +45,5 @@
                 })
             })
         })(jQuery)
-    </script>
+    </script> --}}
 @endpush

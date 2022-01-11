@@ -276,7 +276,12 @@ $(document).ready(function() {
 
   $(document).on('livewire:load', function() {
       Livewire.on('show-category-modal', (data) => {
+          Livewire.emit('editEvent',false);
           $(data.modalId).modal('show')
+      })
+      Livewire.on('modalClose', (data) => {
+          $(data.modalId).modal('hide')
+          toastr.success(data.message, 'สำเร็จ!');
       })
   })
 
